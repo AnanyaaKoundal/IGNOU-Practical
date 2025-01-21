@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.Tech Timetable</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            font-weight: bold;
+        }
+        .dayname {
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+        .lunch {
+            font-size: 1.2em;
+        }
+
+        /* Specific Year Styling */
+        /* 1st Year */
+        .first-year th {
+            background-color: blue;
+            color: white;
+        }
+        /* 2nd Year */
+        .second-year th {
+            background-color: green;
+            color: white;
+        }
+        /* 3rd Year */
+        .third-year th {
+            background-color: purple;
+            color: white;
+        }
+        /* 4th Year */
+        .fourth-year th {
+            background-color: yellow;
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>B.Tech Timetable</h1>
+
+    <!-- Year 1 Table -->
+    <table class="first-year">
+        <caption><a href="first-year.html">First Year Timetable</a></caption>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="dayname">Morning</td>
+                <td>Maths</td>
+                <td>Physics</td>
+                <td>Chemistry</td>
+                <td>Computer Science</td>
+                <td>Electronics</td>
+            </tr>
+            <tr>
+                <td class="dayname">Lunch</td>
+                <td class="lunch" colspan="5">Lunch Break</td>
+            </tr>
+            <tr>
+                <td class="dayname">Afternoon</td>
+                <td>English</td>
+                <td>Electrical</td>
+                <td>Mechanical</td>
+                <td>Computer Lab</td>
+                <td>Workshop</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Year 2 Table -->
+    <table class="second-year">
+        <caption><a href="second-year.html">Second Year Timetable</a></caption>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="dayname">Morning</td>
+                <td>Software Engineering</td>
+                <td>Data Structures</td>
+                <td>Physics</td>
+                <td>Electrical Engineering</td>
+                <td>Mathematics</td>
+            </tr>
+            <tr>
+                <td class="dayname">Lunch</td>
+                <td class="lunch" colspan="5">Lunch Break</td>
+            </tr>
+            <tr>
+                <td class="dayname">Afternoon</td>
+                <td>DBMS</td>
+                <td>Networking</td>
+                <td>Algorithms</td>
+                <td>Computer Lab</td>
+                <td>Web Development</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Year 3 Table -->
+    <table class="third-year">
+        <caption><a href="third-year.html">Third Year Timetable</a></caption>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="dayname">Morning</td>
+                <td>Advanced Programming</td>
+                <td>AI & ML</td>
+                <td>Data Science</td>
+                <td>Network Security</td>
+                <td>Computer Architecture</td>
+            </tr>
+            <tr>
+                <td class="dayname">Lunch</td>
+                <td class="lunch" colspan="5">Lunch Break</td>
+            </tr>
+            <tr>
+                <td class="dayname">Afternoon</td>
+                <td>Cloud Computing</td>
+                <td>Database Design</td>
+                <td>Software Testing</td>
+                <td>Operating Systems</td>
+                <td>Mobile App Dev</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Year 4 Table -->
+    <table class="fourth-year">
+        <caption><a href="fourth-year.html">Fourth Year Timetable</a></caption>
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="dayname">Morning</td>
+                <td>Advanced DBMS</td>
+                <td>Cloud Infrastructure</td>
+                <td>Big Data Analytics</td>
+                <td>Project Work</td>
+                <td>AI Implementation</td>
+            </tr>
+            <tr>
+                <td class="dayname">Lunch</td>
+                <td class="lunch" colspan="5">Lunch Break</td>
+            </tr>
+            <tr>
+                <td class="dayname">Afternoon</td>
+                <td>Software Development</td>
+                <td>Networking</td>
+                <td>Mobile Computing</td>
+                <td>Project Work</td>
+                <td>Software Testing</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

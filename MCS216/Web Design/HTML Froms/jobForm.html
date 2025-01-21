@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        textarea, input[type="text"], input[type="email"], input[type="tel"], select, input[type="number"], input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .slider {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Job Application Form</h1>
+    <form action="/submit" method="POST">
+        <label for="position">Position Applied For (autofocus)</label>
+        <input type="text" id="position" name="position" autofocus required>
+
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="nationality">Nationality</label>
+        <input type="text" id="nationality" name="nationality" required>
+
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="4" required></textarea>
+
+        <label for="tel">Telephone Number</label>
+        <input type="tel" id="tel" name="tel" pattern="[0-9]{10}" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="education">Educational History</label>
+        <textarea id="education" name="education" rows="4" required></textarea>
+
+        <label for="work-exp">Work Experience (in years)</label>
+        <input type="range" id="work-exp" name="work-exp" min="0" max="10" value="0" class="slider">
+        <span id="work-exp-value">0</span> years
+
+        <label for="personal-statement">Personal Statement</label>
+        <textarea id="personal-statement" name="personal-statement" rows="4" required></textarea>
+
+        <h3>Referees</h3>
+        <label for="ref1-name">Referee 1 Name</label>
+        <input type="text" id="ref1-name" name="ref1-name" required>
+
+        <label for="ref1-occupation">Referee 1 Occupation</label>
+        <input type="text" id="ref1-occupation" name="ref1-occupation" required>
+
+        <label for="ref1-relationship">Referee 1 Relationship</label>
+        <input type="text" id="ref1-relationship" name="ref1-relationship" required>
+
+        <label for="ref1-address">Referee 1 Address</label>
+        <textarea id="ref1-address" name="ref1-address" rows="2" required></textarea>
+
+        <label for="ref1-tel">Referee 1 Telephone</label>
+        <input type="tel" id="ref1-tel" name="ref1-tel" pattern="[0-9]{10}" required>
+
+        <label for="ref2-name">Referee 2 Name</label>
+        <input type="text" id="ref2-name" name="ref2-name" required>
+
+        <label for="ref2-occupation">Referee 2 Occupation</label>
+        <input type="text" id="ref2-occupation" name="ref2-occupation" required>
+
+        <label for="ref2-relationship">Referee 2 Relationship</label>
+        <input type="text" id="ref2-relationship" name="ref2-relationship" required>
+
+        <label for="ref2-address">Referee 2 Address</label>
+        <textarea id="ref2-address" name="ref2-address" rows="2" required></textarea>
+
+        <label for="ref2-tel">Referee 2 Telephone</label>
+        <input type="tel" id="ref2-tel" name="ref2-tel" pattern="[0-9]{10}" required>
+
+        <br><br>
+        <button type="submit">Submit Application</button>
+    </form>
+
+    <script>
+        const slider = document.getElementById("work-exp");
+        const output = document.getElementById("work-exp-value");
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+        }
+    </script>
+</body>
+</html>

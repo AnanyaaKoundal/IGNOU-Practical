@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Labs</title>
+    <script>
+        function gradeLabs(students) {
+            students.forEach(student => {
+                try {
+                    let result = student.runLab();  // Run the student's lab code
+                    if (result !== student.expectedResult) {
+                        throw new Error(`${student.name}'s lab failed.`);
+                    }
+                    console.log(`${student.name}'s lab passed.`);
+                } catch (error) {
+                    console.error(error.message);
+                }
+            });
+        }
+
+        // Example students
+        const students = [
+            {
+                name: "Alice",
+                runLab : () => 5 + 5,  // Student's lab code
+                expectedResult: 10
+            },
+            {
+                name: "Bob",
+                runLab: () => 3 + 4,  // Student's lab code
+                expectedResult: 8  // Expected result, which will cause an error
+            }
+        ];
+
+        // Run grading
+        window.onload = function() {
+            gradeLabs(students);
+        };
+    </script>
+</head>
+<body>
+    <h1>Student Lab Grading</h1>
+</body>
+</html>

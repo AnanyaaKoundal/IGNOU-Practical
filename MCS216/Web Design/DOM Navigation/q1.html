@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details Page</title>
+    <script>
+        // Function to add the TV details
+        function addTV() {
+            const productContainer = document.getElementById('products');
+            const tvDetails = document.createElement('p');
+            tvDetails.id = 'tv'; // Give the TV element an ID so we can delete it later
+            tvDetails.textContent = 'TV: $499';
+            productContainer.appendChild(tvDetails);
+        }
+
+        // Function to delete the cell phone details
+        function deleteCellPhone() {
+            const cellPhone = document.getElementById('cellPhone');
+            if (cellPhone) {
+                cellPhone.remove(); // Remove the cell phone details
+            }
+        }
+
+        // Add event listeners after the page is loaded
+        window.onload = function() {
+            document.getElementById('addButton').addEventListener('click', addTV);
+            document.getElementById('deleteButton').addEventListener('click', deleteCellPhone);
+        };
+    </script>
+</head>
+<body>
+    <h1>Product Details</h1>
+
+    <div id="products">
+        <p id="laptop">Laptop: $999</p>
+        <p id="cellPhone">Cell Phone: $599</p>
+    </div>
+
+    <button id="addButton">Add TV</button>
+    <button id="deleteButton">Delete Cell Phone</button>
+</body>
+</html>

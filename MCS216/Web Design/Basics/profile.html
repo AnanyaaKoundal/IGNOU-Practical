@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .bold-text {
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        .reverse-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column-reverse;
+        }
+
+        .reverse-list li {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .interest, .not-interest {
+            display: inline-block;
+            margin: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 150px;
+            height: 150px;
+        }
+
+        .interest {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .not-interest {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .img-container {
+            width: 100px;
+            height: 100px;
+            margin: 10px auto;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>About Me</h1>
+
+    <section>
+        <h2>Personal Details</h2>
+        <p><strong>Name:</strong> John Doe</p>
+        <p><strong>Gender:</strong> Male</p>
+        <p><strong>Age:</strong> 25</p>
+        <p><strong>Location:</strong> New York</p>
+    </section>
+
+    <section>
+        <h2>About Me</h2>
+        <p>Hi! I am <span class="bold-text">John</span>, a web developer who loves <span class="bold-text">coding</span> and creating interactive websites. I am passionate about learning new technologies and always looking for ways to improve my skills.</p>
+    </section>
+
+    <section>
+        <h2>Current Classes</h2>
+        <table>
+            <tr>
+                <th>Class Name</th>
+                <th>Instructor</th>
+                <th>Timing</th>
+            </tr>
+            <tr>
+                <td>Web Development</td>
+                <td>Mr. Smith</td>
+                <td>9:00 AM - 11:00 AM</td>
+            </tr>
+            <tr>
+                <td>JavaScript Programming</td>
+                <td>Ms. Johnson</td>
+                <td>11:30 AM - 1:30 PM</td>
+            </tr>
+            <tr>
+                <td>Data Structures</td>
+                <td>Dr. Brown</td>
+                <td>2:00 PM - 4:00 PM</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Favorite Movies, Books, and TV Shows</h2>
+        <h3>Movies:</h3>
+        <ul class="reverse-list">
+            <li>Inception</li>
+            <li>Interstellar</li>
+            <li>The Dark Knight</li>
+        </ul>
+
+        <h3>Books:</h3>
+        <ul class="reverse-list">
+            <li>The Great Gatsby</li>
+            <li>1984</li>
+            <li>To Kill a Mockingbird</li>
+        </ul>
+
+        <h3>TV Shows:</h3>
+        <ul class="reverse-list">
+            <li>Breaking Bad</li>
+            <li>Stranger Things</li>
+            <li>Friends</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Jobs of Interest</h2>
+        <div class="interest">
+            <h4>Web Developer</h4>
+            <div class="img-container">
+                <img src="https://via.placeholder.com/100" alt="Happy">
+            </div>
+            <p>Happy to work on coding and web development tasks!</p>
+        </div>
+
+        <h2>Jobs I'm Not Interested In</h2>
+        <div class="not-interest">
+            <h4>Customer Service</h4>
+            <div class="img-container">
+                <img src="https://via.placeholder.com/100" alt="Sad">
+            </div>
+            <p>Not a fan of repetitive tasks!</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Interesting Facts About My Neighbours</h2>
+        <ul>
+            <li>My neighbor, Sarah, is an amazing cook! She makes the best lasagna.</li>
+            <li>John, the guy next door, collects rare coins and often shares stories about his collection.</li>
+        </ul>
+    </section>
+
+</body>
+</html>

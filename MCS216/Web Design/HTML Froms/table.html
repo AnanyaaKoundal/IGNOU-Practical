@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expression Calculator</title>
+    <script>
+        function calculate() {
+            var expr1 = document.getElementById("expr1").value;
+            var expr2 = document.getElementById("expr2").value;
+            
+            try {
+                document.getElementById("result1").innerHTML = eval(expr1);
+            } catch (e) {
+                document.getElementById("result1").innerHTML = "Invalid Expression";
+            }
+            
+            try {
+                document.getElementById("result2").innerHTML = eval(expr2);
+            } catch (e) {
+                document.getElementById("result2").innerHTML = "Invalid Expression";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Expression Calculator</h1>
+    <form>
+        <table border="3" cellpadding="10" cellspacing="0" style="border-style: double;">
+            <tr>
+                <th>Expression</th>
+                <th>Result</th>
+            </tr>
+            <tr>
+                <td><input type="text" id="expr1" value="1 + 1" /></td>
+                <td id="result1"></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="expr2" value="1 + 1 * 2" /></td>
+                <td id="result2"></td>
+            </tr>
+        </table>
+        <br>
+        <button type="button" onclick="calculate()">Calculate</button>
+    </form>
+</body>
+</html>

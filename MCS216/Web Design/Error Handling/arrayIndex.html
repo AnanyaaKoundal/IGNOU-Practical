@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Index</title>
+    <script>
+        function showAnimal() {
+            const animals = ['Lion', 'Tiger', 'Elephant', 'Giraffe'];
+            let index = parseInt(document.getElementById('index').value);
+            console.log("User entered index: " + index);
+
+            try {
+                // Try to access the animal at the given index
+                let animal = animals[index];
+                if (animal === undefined) {
+                    throw new TypeError("No animal found at this index.");
+                }
+                document.getElementById('animal').textContent = "Animal: " + animal;
+            } catch (error) {
+                document.getElementById('animal').textContent = "Error: " + error.message;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Enter an Index to See the Animal</h1>
+    <input type="number" id="index" required>
+    <button onclick="showAnimal()">Show Animal</button>
+    <p id="animal"></p>
+</body>
+</html>

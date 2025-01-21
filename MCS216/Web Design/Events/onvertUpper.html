@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uppercase Text Input</title>
+    <script>
+        function toUpperCase() {
+            const inputField = document.getElementById("textInput");
+            inputField.value = inputField.value.toUpperCase();
+        }
+    </script>
+</head>
+<body>
+    <h1>Type in the Text Box (will be converted to uppercase):</h1>
+    <input type="text" id="textInput" oninput="toUpperCase()" placeholder="Type here...">
+</body>
+</html>

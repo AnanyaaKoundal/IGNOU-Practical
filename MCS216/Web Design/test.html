@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>Cookies Example</title>
+    <style>
+        /* Style for the modal (popup) */
+        .modal {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            text-align: center;
+        }
+        .modal-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .close {
+            background-color: #f44336;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 14px;
+            border: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button id="set1">Set Cookie 1</button>
+    <button id="get1">Get Cookie 1</button>
+    <button id="del1">Delete Cookie 1</button> <br>
+    <button id="set2">Set Cookie 2</button>
+    <button id="get2">Get Cookie 2</button>
+    <button id="del2">Delete Cookie 2</button> <br>
+    <button id="display">Display all cookies</button>
+    <div id="cookieModal" class="modal">
+        <div class="modal-content">
+            <h2>Cookies Stored</h2>
+            <p id="cookieContent"></p>
+            <button class="close" id="closeModal">Close</button>
+        </div>
+    </div>
+    <script>
+        function getCookie(name){
+            const ck = document.cookie.split(';');
+            for(let i=0; i<ck.length; i++){
+                let c = ck[i].trim();
+                if(c.startsWith(name + '=')){
+                    return c.split('=')[1];
+                }
+            }
+        }
+        document.getElementById('set1').addEventListener('click', ()=>{
+            document.cookie = "cookie1=Martin; path=/; expires=Mon, 27 Jan 2025";
+        })
+        document.getElementById('get1').addEventListener('click', ()=>{
+            const c = getCookie('cookie1');
+            document.getElementById('cookieContent').textContent = `Cookie 1: ${c}`;
+            document.getElementById('cookieModal').style.display = 'flex';
+        })
+        document.getElementById('del1').addEventListener('click', ()=>{
+            document.cookie = "cookie1=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+        })
+        document.getElementById('set2').addEventListener('click', ()=>{
+            document.cookie = "cookie2=Jane; path=/; expires=Mon, 27 Jan 2025";
+        })
+        document.getElementById('get2').addEventListener('click', ()=>{
+            const c = getCookie('cookie2');
+            document.getElementById('cookieContent').textContent = `Cookie 2: ${c}`;
+            document.getElementById('cookieModal').style.display = 'flex';
+        })
+        document.getElementById('del2').addEventListener('click', ()=>{
+            document.cookie = "cookie2=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+        })
+        document.getElementById('display').addEventListener('click', ()=>{
+            const cookies = document.cookie.split(';');
+            if(cookies.length == 1 && cookies[0] == ''){
+                document.getElementById('cookieContent').textContent = 'No cookies stored';
+            }else{
+                document.getElementById('cookieContent').innerHTML = "";
+                cookies.forEach(cookie=>{
+                    const [name, value] = cookie.split('=');
+                    document.getElementById('cookieContent').innerHTML += `Name: ${name}, Value: ${value} <br>`;
+                })
+            }
+            document.getElementById('cookieModal').style.display = 'flex';
+        })
+        document.getElementById('closeModal').addEventListener('click', ()=>{
+            document.getElementById('cookieModal').style.display = 'none';
+        })
+    </script>
+</body>
+</html>

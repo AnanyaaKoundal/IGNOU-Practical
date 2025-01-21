@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="bgcolor" id="bgcolor">
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+        <option value="yellow">Yellow</option>
+    </select>
+    <script>
+        document.getElementById('bgcolor').addEventListener('change', ()=>{
+            var bg = document.getElementById('bgcolor').value;
+            document.body.style.backgroundColor = bg;
+            document.cookie = `bgcolor=${bg}; path=/; expires=Mon, 27 Jan 2025 12:00:00 UTC`;
+        })
+        // document.body.style.backgroundColor = document.cookie.split('=')[1] || 'white';
+        function getCookie(name) {
+            const cookieArr = document.cookie.split(';');
+            for (let i = 0; i < cookieArr.length; i++) {
+                let cookie = cookieArr[i].trim();
+                if (cookie.startsWith(name + '=')) {
+                    return cookie.split('=')[1];
+                }
+            }
+            return null; // Return null if the cookie is not found
+        }
+
+        // On page load, check if there is a saved background color in cookies
+        const savedColor = getCookie('bgcolor');
+        if (savedColor) {
+            document.body.style.backgroundColor = savedColor;
+            document.getElementById('bgcolor').value = savedColor; // Set the dropdown to the saved color
+        }
+    </script>
+</body>
+</html>

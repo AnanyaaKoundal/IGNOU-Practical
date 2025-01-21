@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retry Multiply</title>
+    <script>
+        // Simulated function that sometimes fails
+        function primitiveMultiply(a, b) {
+            let rand = Math.random();
+            if (rand < 0.2) {
+                return a * b;  // 20% chance to succeed
+            } else {
+                throw new Error("MultiplicatorUnitFailure");
+            }
+        }
+
+        function reliableMultiply(a, b) {
+            while (true) {
+                try {
+                    return primitiveMultiply(a, b);
+                } catch (error) {
+                    if (error.message !== "MultiplicatorUnitFailure") {
+                        throw error;  // Rethrow if it's a different error
+                    }
+                }
+            }
+        }
+
+        window.onload = function() {
+            let result = reliableMultiply(5, 7);
+            console.log("Multiplication successful! Result: " + result);
+        };
+    </script>
+</head>
+<body>
+    <h1>Reliable Multiplication</h1>
+</body>
+</html>

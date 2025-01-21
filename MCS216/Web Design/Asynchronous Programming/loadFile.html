@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Load External HTML</title>
+</head>
+<body>
+    <h1>Load External HTML File</h1>
+    <button onclick="loadHTMLFile()">Load Content</button>
+    <div id="externalContent"></div>
+
+    <script>
+        function loadHTMLFile() {
+            const xhr = new XMLHttpRequest();
+            
+            // Specify the type of request and the URL of the external HTML file
+            xhr.open('GET', 'http://127.0.0.1:5500/MCS216/Web%20Design/Asynchronous%20Programming/clock.html', true);
+            
+            // Define the callback function that will run when the file is loaded
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    // If the file is loaded successfully, insert the content into the div
+                    document.getElementById('externalContent').innerHTML = xhr.responseText;
+                } else {
+                    console.error('Failed to load file');
+                }
+            };
+
+            // Send the request
+            xhr.send();
+        }
+    </script>
+</body>
+</html>

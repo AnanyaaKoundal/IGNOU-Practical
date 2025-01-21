@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Division Operation</title>
+    <script>
+        function divideNumbers() {
+            try {
+                // Get the numbers from input
+                let num1 = parseFloat(document.getElementById('num1').value);
+                let num2 = parseFloat(document.getElementById('num2').value);
+
+                // Check if inputs are valid numbers
+                if (isNaN(num1) || isNaN(num2)) {
+                    throw new Error("Please enter valid numbers.");
+                }
+
+                // Perform division
+                if (num2 === 0) {
+                    throw new Error("Cannot divide by zero.");
+                }
+
+                let result = num1 / num2;
+                document.getElementById('result').textContent = "Result: " + result;
+
+            } catch (error) {
+                // Catch and display any errors
+                document.getElementById('result').textContent = "Error: " + error.message;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Division of Two Numbers</h1>
+    <label for="num1">Enter first number:</label>
+    <input type="text" id="num1" required><br><br>
+    <label for="num2">Enter second number:</label>
+    <input type="text" id="num2" required><br><br>
+    <button onclick="divideNumbers()">Divide</button>
+    <p id="result"></p>
+</body>
+</html>

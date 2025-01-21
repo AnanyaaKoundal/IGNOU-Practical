@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Pattern</title>
+</head>
+<body>
+    <h1>Number Pattern</h1>
+    <div id="pattern"></div>
+
+    <script>
+        function printPattern() {
+            let output = '';
+            for (let i = 1; i <= 10; i++) {
+                for (let j = 1; j <= i; j++) {
+                    output += i + ' ';
+                }
+                output += '<br>';
+            }
+            document.getElementById('pattern').innerHTML = output;
+        }
+
+        printPattern();
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Change on Events</title>
+    <script>
+        function changeImage(eventType) {
+            const image = document.getElementById("dynamicImage");
+            if (eventType === 'mouseover') {
+                image.src = "mouseover-image.jpg"; // Replace with actual image path
+            } else if (eventType === 'mouseout') {
+                image.src = "mouseout-image.jpg"; // Replace with actual image path
+            } else if (eventType === 'mousedown') {
+                image.src = "mousedown-image.jpg"; // Replace with actual image path
+            } else if (eventType === 'mouseup') {
+                image.src = "mouseup-image.jpg"; // Replace with actual image path
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Hover and Click the Image to Change It:</h1>
+    <img id="dynamicImage" src="default-image.jpg" alt="Interactive Image" 
+         onmouseover="changeImage('mouseover')" 
+         onmouseout="changeImage('mouseout')" 
+         onmousedown="changeImage('mousedown')" 
+         onmouseup="changeImage('mouseup')">
+</body>
+</html>
