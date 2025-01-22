@@ -38,6 +38,8 @@ class Novel extends Book {
         if (this.timesCheckedOut > 100) {
             this.discarded = true;
             console.log(`${this.title} (Novel) has been checked out more than 100 times and discarded.`);
+        }else{
+            console.log(`${this.title} (Novel) has ${100 - this.timesCheckedOut} checkouts left before being discarded.`);
         }
     }
 

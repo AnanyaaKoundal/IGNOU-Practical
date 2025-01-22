@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <limits.h>
 
-#define V 5  // Number of vertices
+#define V 4  // Number of vertices
 #define INF INT_MAX  // Representation of infinity
 
 // Function to print the matrix
@@ -58,11 +58,10 @@ void floydWarshall(int graph[V][V]) {
 int main() {
     // Initialize the graph as an adjacency matrix
     int graph[V][V] = {
-        {0, 3, INF, INF, 5},
-        {3, 0, 1, INF, INF},
-        {INF, 1, 0, 7, INF},
-        {INF, INF, 7, 0, 2},
-        {5, INF, INF, 2, 0}
+        {0, 9, -4, INF},
+        {6, 0, INF, 2},
+        {INF, 5, 0, INF},
+        {INF, INF, 1, 0}
     };
 
     // Call the Floyd-Warshall algorithm

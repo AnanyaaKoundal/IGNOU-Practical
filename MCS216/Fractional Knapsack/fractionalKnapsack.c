@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 // Function to perform the fractional knapsack algorithm
 double fractionalKnapsack(int values[], int weights[], int n, int capacity) {
@@ -8,21 +9,40 @@ double fractionalKnapsack(int values[], int weights[], int n, int capacity) {
         ratios[i] = (double)values[i] / weights[i];
     }
 
-    // Simple Greedy approach: pick items based on the ratio
+    // Create an array to store the order of the indices after sorting by ratio
+    int index[n];
+    for (int i = 0; i < n; i++) {
+        index[i] = i;
+    }
+
+    // Sort indices based on ratios in descending order
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (ratios[index[i]] < ratios[index[j]]) {
+                // Swap indices
+                int temp = index[i];
+                index[i] = index[j];
+                index[j] = temp;
+            }
+        }
+    }
+
+    // Greedy approach: pick items based on sorted ratio
     double totalValue = 0.0;
     int remainingCapacity = capacity;
 
-    // Repeat for each item based on sorted ratio (just doing this in order of given input)
     for (int i = 0; i < n; i++) {
+        int currentIndex = index[i];
+
         if (remainingCapacity == 0) break;  // No more space in the knapsack
         
-        if (weights[i] <= remainingCapacity) {
+        if (weights[currentIndex] <= remainingCapacity) {
             // Take the entire item
-            totalValue += values[i];
-            remainingCapacity -= weights[i];
+            totalValue += values[currentIndex];
+            remainingCapacity -= weights[currentIndex];
         } else {
             // Take the fraction of the item
-            totalValue += values[i] * ((double)remainingCapacity / weights[i]);
+            totalValue += values[currentIndex] * ((double)remainingCapacity / weights[currentIndex]);
             break;  // Knapsack is full
         }
     }

@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You Message</title>
+    <title>Show Date and Time</title>
     <script>
-        function showThankYou() {
-            document.getElementById("message").innerHTML = "Thank You!";
+        function showDateTime() {
+            var currentDateTime = new Date();
+            document.getElementById("datetime").innerHTML = currentDateTime;
         }
     </script>
 </head>
 <body>
-    <h1 id="message">Web Design Lab</h1>
-    <button onclick="showThankYou()">Submit</button>
+    <h1>Web Design Lab</h1>
+    <p id="datetime"></p>
+    <button onclick="showDateTime()">Show Date and Time</button>
 </body>
 </html>

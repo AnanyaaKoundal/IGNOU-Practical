@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <limits.h>
 
-#define V 6  // Number of vertices
+#define V 7  // Number of vertices
+#define INF INT_MAX  // Infinity
 
 // Function to find the vertex with the minimum key value
 int minKey(int key[], int mstSet[]) {
-    int min = INT_MAX, min_index;
+    int min = INF, min_index;
     for (int v = 0; v < V; v++) {
         if (mstSet[v] == 0 && key[v] < min) {
             min = key[v], min_index = v;
@@ -22,7 +23,7 @@ void primMST(int graph[V][V]) {
 
     // Initialize all keys as INFINITE and mstSet[] as 0
     for (int i = 0; i < V; i++) {
-        key[i] = INT_MAX;
+        key[i] = INF;
         mstSet[i] = 0;
     }
 
@@ -50,7 +51,7 @@ void primMST(int graph[V][V]) {
         printf("\nIteration %d:\n", count + 1);
         printf("Vertex\tKey\tParent\n");
         for (int i = 0; i < V; i++) {
-            printf("%d\t%d\t%d\n", i, key[i], parent[i]);
+            printf("%d\t\t%d\t\t%d\n", i, key[i], parent[i]);
         }
     }
 
@@ -67,12 +68,13 @@ void primMST(int graph[V][V]) {
 int main() {
     // Example graph represented as an adjacency matrix (Weighted Undirected Graph)
     int graph[V][V] = {
-        {0, 2, 0, 6, 0, 0},
-        {2, 0, 3, 8, 5, 0},
-        {0, 3, 0, 0, 7, 0},
-        {6, 8, 0, 0, 9, 0},
-        {0, 5, 7, 9, 0, 4},
-        {0, 0, 0, 0, 4, 0}
+        {0, 2, 1, 0, 0, 0, 0},
+        {2, 0, 0, 4, 3, 0, 0},
+        {1, 0, 7, 0, 0, 6, 0},
+        {0, 4, 7, 0, 5, 9, 2},
+        {0, 3, 0, 5, 0, 0, 0},
+        {0, 0, 6, 9, 0, 0, 8},
+        {0, 0, 0, 2, 0, 8, 0}
     };
 
     primMST(graph);

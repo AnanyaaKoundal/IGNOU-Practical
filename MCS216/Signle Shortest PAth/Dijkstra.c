@@ -1,102 +1,64 @@
 #include <stdio.h>
 #include <limits.h>
 
-#define MAX_VERTICES 100
+#define INF 9999
+#define MAX 10
 
-// Function to find the vertex with the minimum distance value
-int minDistance(int dist[], int sptSet[], int vertices) {
-    int min = INT_MAX, minIndex;
+void DijkstraAlgorithm(int Graph[MAX][MAX], int size, int start) {
+    int cost[MAX][MAX], distance[MAX], previous[MAX], visited[MAX] = {0};
+    int i, j, counter = 1, min_dist, next_node;
 
-    for (int v = 0; v < vertices; v++) {
-        if (!sptSet[v] && dist[v] < min) {
-            min = dist[v];
-            minIndex = v;
+    // Initialize cost matrix and distance array
+    for (i = 0; i < size; i++) {
+        for (j = 0; j < size; j++) {
+            cost[i][j] = (Graph[i][j] == 0) ? INF : Graph[i][j];
         }
+        distance[i] = (i == start) ? 0 : cost[start][i];
+        previous[i] = start;
     }
 
-    return minIndex;
-}
+    visited[start] = 1;
 
-// Function to print the constructed distance array
-void printSolution(int dist[], int vertices) {
-    printf("Vertex \tDistance from Source\n");
-    for (int i = 0; i < vertices; i++) {
-        printf("%d \t%d\n", i, dist[i]);
-    }
-}
-
-// Function to implement Dijkstra's algorithm for a given graph and source vertex
-void dijkstra(int graph[MAX_VERTICES][MAX_VERTICES], int src, int vertices) {
-    int dist[MAX_VERTICES]; // The output array dist[i] holds the shortest distance from src to i
-    int sptSet[MAX_VERTICES]; // sptSet[i] will be true if vertex i is included in the shortest path tree or the shortest distance from src to i is finalized
-
-    // Initialize all distances as INFINITE and sptSet[] as false
-    for (int i = 0; i < vertices; i++) {
-        dist[i] = INT_MAX;
-        sptSet[i] = 0;
-    }
-
-    // Distance from source vertex to itself is always 0
-    dist[src] = 0;
-
-    // Find the shortest path for all vertices
-    for (int count = 0; count < vertices - 1; count++) {
-        // Pick the minimum distance vertex from the set of vertices not yet processed.
-        // u is always equal to src in the first iteration.
-        int u = minDistance(dist, sptSet, vertices);
-
-        // Mark the picked vertex as processed
-        sptSet[u] = 1;
-
-        // Update dist value of the adjacent vertices of the picked vertex.
-        for (int v = 0; v < vertices; v++) {
-            // Update dist[v] only if it is not in the sptSet, there is an edge from u to v,
-            // and the total weight of path from src to v through u is smaller than the current value of dist[v]
-            if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX && dist[u] + graph[u][v] < dist[v]) {
-                dist[v] = dist[u] + graph[u][v];
+    // Dijkstra's algorithm
+    while (counter < size - 1) {
+        min_dist = INF;
+        for (i = 0; i < size; i++) {
+            if (!visited[i] && distance[i] < min_dist) {
+                min_dist = distance[i];
+                next_node = i;
             }
         }
+
+        visited[next_node] = 1;
+        for (i = 0; i < size; i++) {
+            if (!visited[i] && min_dist + cost[next_node][i] < distance[i]) {
+                distance[i] = min_dist + cost[next_node][i];
+                previous[i] = next_node;
+            }
+        }
+        counter++;
     }
 
-    // Print the constructed distance array
-    printSolution(dist, vertices);
+    // Print the shortest distances
+    for (i = 0; i < size; i++) {
+        if (i != start) {
+            printf("\nDistance from node %d to node %d: %d", start, i, distance[i]);
+        }
+    }
 }
 
 int main() {
-    int vertices;
-
-    // Input the number of vertices
-    printf("Input the number of vertices: ");
-    scanf("%d", &vertices);
-
-    if (vertices <= 0 || vertices > MAX_VERTICES) {
-        printf("Invalid number of vertices. Exiting...\n");
-        return 1;
-    }
-
-    int graph[MAX_VERTICES][MAX_VERTICES];
-
-    // Input the adjacency matrix representing the weighted graph
-    printf("Input the adjacency matrix for the graph (use INT_MAX for infinity):\n");
-    for (int i = 0; i < vertices; i++) {
-        for (int j = 0; j < vertices; j++) {
-            scanf("%d", &graph[i][j]);
-        }
-    }
-
-    int source;
-
-    // Input the source vertex
-    printf("Input the source vertex: ");
-    scanf("%d", &source);
-
-    if (source < 0 || source >= vertices) {
-        printf("Invalid source vertex. Exiting...\n");
-        return 1;
-    }
-
-    // Perform Dijkstra's algorithm
-    dijkstra(graph, source, vertices);
-
+    int Graph[MAX][MAX] = {
+        {0, 4, 0, 0, 0, 8, 0},
+        {4, 0, 8, 0, 0, 11, 0},
+        {0, 8, 0, 7, 0, 4, 0},
+        {0, 0, 7, 0, 9, 14, 0},
+        {0, 0, 0, 9, 0, 10, 2},
+        {0, 0, 4, 14, 10, 0, 2},
+        {0, 0, 0, 0, 2, 0, 1}
+    };
+    
+    int size = 7, source = 0;
+    DijkstraAlgorithm(Graph, size, source);
     return 0;
 }
